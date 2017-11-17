@@ -9,11 +9,14 @@ namespace RPSLS
     class Player
     {
         public int score;
-        public int ThrowHand()
+
+        public Player()
         {
-            int playerThrow;
-            Console.WriteLine("Throw Player One");
-            string userInput = Console.ReadLine();
+            
+        }
+        public int ConvertThrow(string userInput)
+        {
+            int playerThrow = 0;
             switch (userInput)
             {
                 case "scissors":
@@ -33,10 +36,19 @@ namespace RPSLS
                     break;
                 default:
                     Console.WriteLine("Please input 'scissors', 'paper', 'rock', 'lizard', or 'spock'");
-                    ThrowHand();
+                    string userInput2 = Console.ReadLine();
+                    playerThrow = ConvertThrow(userInput2);
                     break;
             }
             return playerThrow;
         }
+        public string GetThrow(string playerNumber)
+        {
+            Console.WriteLine("{0} enter throw", playerNumber);
+            string userThrowInput = Console.ReadLine();
+            return userThrowInput;
+        }
+
     }
 }
+
