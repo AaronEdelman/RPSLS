@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPSLS
 {
-    class Program
+    class HumanOpponent:Player
     {
-        static void Main(string[] args)
-        {
-            Game game = new Game();
-            game.RunGame();
-        }
     }
 }
