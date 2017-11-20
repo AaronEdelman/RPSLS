@@ -42,7 +42,7 @@ namespace RPSLS
             }
             return playerThrow;
         }
-        public string GetThrow(string playerNumber)
+        public virtual string GetThrow(string playerNumber)
         {
             Console.WriteLine("{0} enter throw", playerNumber);
             string userThrowInput = Console.ReadLine();

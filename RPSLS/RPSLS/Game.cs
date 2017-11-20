@@ -15,21 +15,22 @@ namespace RPSLS
         {
             explainRules();
             playerOne = new HumanOpponent();
-            SelectOpponent();
+            string userSelection = SelectOpponent();
+            GrabOpponent(userSelection);
             ThrowHand();
-            //asdf crown winner
+            CrownChamp(playerOne.score, playerTwo.score);
         }
         void explainRules()
         {
             Console.WriteLine("Welcome to the world of Rock, Paper, Scissors, Lizard, Spock. You will be matched up against either a pal or the computer to see who has best mastered Earth's five basic elements. The victor will be the first to subdue their oponent three times.");
         }
-        public void SelectOpponent()
+        public string SelectOpponent()
         {
             Console.WriteLine("Please select if you would like to play against a 'human' or a 'bot'.");
             string userSelection = Console.ReadLine();
-            GrabOpponent(userSelection);
+            return userSelection;
         }
-        public void GrabOpponent(string userSelection)
+        public Player GrabOpponent(string userSelection)
         {
             if(userSelection == "human")
             {
@@ -44,20 +45,21 @@ namespace RPSLS
                 Console.WriteLine("Please write either 'human' or 'bot'. ");
                 SelectOpponent();
             }
+            return playerTwo;
+
         }
         public void ThrowHand()
         {
-            while (playerOne.score < 3 || playerTwo.score < 3)
+            while (playerOne.score < 3 && playerTwo.score < 3)
             {
                 string userOneInput = playerOne.GetThrow("player One");
                 int playerOneThrow = playerOne.ConvertThrow(userOneInput);
                 string userTwoInput = playerTwo.GetThrow("player Two");
-                int playerTwoThrow = playerOne.ConvertThrow(userTwoInput);
+                int playerTwoThrow = playerTwo.ConvertThrow(userTwoInput);
                 AnnounceThrows(userOneInput, userTwoInput);
                 int throwDifference = CalculateThrowWinner(playerOneThrow, playerTwoThrow);
                 DeclareThrowWinner(throwDifference);
             }
-            CrownChamp(playerOne.score, playerTwo.score);
         }
         public int CalculateThrowWinner(int playerOneThrow, int playerTwoThrow)
         {
@@ -66,16 +68,16 @@ namespace RPSLS
         }
         public void AnnounceThrows(string playerOneInput, string playerTwoInput)
         {
-            Console.WriteLine("Player One threw a" + playerOneInput + ". Player Two threw a" + playerTwoInput + ".");
+            Console.WriteLine("Player One threw a " + playerOneInput + ". Player Two threw a " + playerTwoInput + ".");
         }
         public void DeclareThrowWinner(int throwDifference)
         {
-            if (throwDifference == 1 || throwDifference == 3)
+            if (throwDifference == 2 || throwDifference == 4)
             {
                 playerOne.score++;
                 Console.WriteLine("Player One wins this round.");
             }
-            else if (throwDifference == 2 || throwDifference == 4)
+            else if (throwDifference == 1 || throwDifference == 3)
             {
                 playerTwo.score++;
                 Console.WriteLine("Player Two wins this round");
@@ -90,10 +92,12 @@ namespace RPSLS
             if (playerOneScore == 3)
             {
                 Console.WriteLine("Player One Wins");
+                Console.ReadLine();
             }
             else
             {
                 Console.WriteLine("Player Two Wins");
+                Console.ReadLine();
             }
         }
     }

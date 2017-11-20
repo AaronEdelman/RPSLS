@@ -8,7 +8,6 @@ namespace RPSLS
 {
     class HumanOpponent : Player
     {
-        
 
     }
 }
