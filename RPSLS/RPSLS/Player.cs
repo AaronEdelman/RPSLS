@@ -8,7 +8,7 @@ namespace RPSLS
 {
     class Player
     {
-        public int score;
+        public int score = 0;
 
         public Player()
         {
@@ -35,10 +35,9 @@ namespace RPSLS
                     playerThrow = 4;
                     break;
                 default:
-                    Console.WriteLine("Please input 'scissors', 'paper', 'rock', 'lizard', or 'spock'");
-                    string userInput2 = Console.ReadLine();
-                    playerThrow = ConvertThrow(userInput2);
+                    Console.WriteLine("how did this happen?");
                     break;
+                    
             }
             return playerThrow;
         }
@@ -46,6 +45,11 @@ namespace RPSLS
         {
             Console.WriteLine("{0} enter throw", playerNumber);
             string userThrowInput = Console.ReadLine();
+            while (userThrowInput != "scissors" && userThrowInput != "paper" && userThrowInput != "rock" && userThrowInput != "spock" && userThrowInput != "lizard")
+            {
+                Console.WriteLine("Please enter 'scissors', 'paper', 'rock', 'lizard', or 'spock'");
+                userThrowInput = GetThrow(playerNumber);
+            }
             return userThrowInput;
         }
 

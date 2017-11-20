@@ -16,7 +16,6 @@ namespace RPSLS
             explainRules();
             playerOne = new HumanOpponent();
             string userSelection = SelectOpponent();
-            GrabOpponent(userSelection);
             ThrowHand();
             CrownChamp(playerOne.score, playerTwo.score);
         }
@@ -28,6 +27,7 @@ namespace RPSLS
         {
             Console.WriteLine("Please select if you would like to play against a 'human' or a 'bot'.");
             string userSelection = Console.ReadLine();
+            GrabOpponent(userSelection);
             return userSelection;
         }
         public Player GrabOpponent(string userSelection)
@@ -50,7 +50,7 @@ namespace RPSLS
         }
         public void ThrowHand()
         {
-            while (playerOne.score < 3 && playerTwo.score < 3)
+           while (playerOne.score < 3 && playerTwo.score < 3)
             {
                 string userOneInput = playerOne.GetThrow("player One");
                 int playerOneThrow = playerOne.ConvertThrow(userOneInput);
@@ -68,7 +68,7 @@ namespace RPSLS
         }
         public void AnnounceThrows(string playerOneInput, string playerTwoInput)
         {
-            Console.WriteLine("Player One threw a " + playerOneInput + ". Player Two threw a " + playerTwoInput + ".");
+            Console.WriteLine("Player One threw " + playerOneInput + ". Player Two threw " + playerTwoInput + ".");
         }
         public void DeclareThrowWinner(int throwDifference)
         {
