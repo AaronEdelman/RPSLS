@@ -10,7 +10,7 @@ namespace RPSLS
     {
         public override string GetThrow(string playerNumber)
         {
-            int compThrow = new Random().Next(0, 4);
+            int compThrow = new Random().Next(0, 5);
             string compThrowString = ConvertCompNumber(compThrow);
             return compThrowString;
         }
